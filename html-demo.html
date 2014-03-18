@@ -12,16 +12,27 @@ and open the template in the editor.
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
-        <ul class="nav nav-tabs">
-            <li class="active"><a href="#">Etusivu</a></li>
-            <li><a href="haku.php">Haku</a></li>
-            <li><a href="drinkit.php#">Drinkit</a></li>
-        </ul>
+        <div class="container">            
+            <form class="navbar-form navbar-right" role="form">
+                <div class="form-group">
+                    <input type="text" placeholder="Käyttäjätunnus" class="form-control">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Salasana" class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Kirjaudu sisään!</button>
+            </form>
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#">Etusivu</a></li>
+                <li><a href="haku.php">Haku</a></li>
+                <li><a href="drinkit.php#">Drinkit</a></li>
+            </ul>
 
-        <h1>Tervetuloa drinkkiarkistoon!</h1>
-        <p>Täällä voit hakea, selata, ehdottaa ja lisätä drinkkireseptejä. <br>
-            Lisätäksesi drinkkejä sinun täytyy olla rekisteröitynyt käyttäjä. <br>
-            Jos et ole vielä rekisteröitynyt, tee se alla olevaa nappulaa painamalla!</p>
-
+            <h1>Tervetuloa drinkkiarkistoon!</h1>
+            <p>Täällä voit hakea, selata, ehdottaa ja lisätä drinkkireseptejä. <br>
+                Lisätäksesi drinkkejä sinun täytyy olla rekisteröitynyt käyttäjä. <br>
+                Jos et ole vielä rekisteröitynyt, tee se alla olevaa nappulaa painamalla!</p>
+            <button type="button" class="btn btn-primary">Rekisteröidy</button>
+        </div>
     </body>
 </html>
