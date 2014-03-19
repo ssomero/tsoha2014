@@ -26,43 +26,46 @@
 
             <h1>Drinkit</h1>
             <p>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
+            <button type="button" class="btn btn-default navbar-btn">Ehdota reseptiä</button>
 
-            <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th>Nimi</th>
-                        <th>Pääainesosa</th>
-                        <th>Juomalaji</th>
-                        <th>Lisääjä</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Mojito</td>
-                        <td>Vaalea rommi</td>
-                        <td>cocktail</td>
-                        <td>ylläpitäjä</td>
-                    </tr>
-                    <tr>
-                        <td>Piña Colada</td>
-                        <td>Vaalea rommi</td>
-                        <td>cocktail</td>
-                        <td>ylläpitäjä</td>
-                    </tr>
-                    <tr>
-                        <td>Sitrusbooli</td>
-                        <td>Vodka</td>
-                        <td>booli</td>
-                        <td>käyt123</td>
-                    </tr>
-                    <tr>
-                        <td>ÄssäMix</td>
-                        <td>Useita</td>
-                        <td>shotti</td>
-                        <td>ylläpitäjä</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </body>
+            <div class="container">
+                <table class="table table-striped">
+            </div>
+            <thead>
+                <tr>
+                    <th>Nimi</th>
+                    <th>Pääainesosa</th>
+                    <th>Juomalaji</th>
+                    <th>Lisääjä</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Mojito</td>
+                    <td>Vaalea rommi</td>
+                    <td>cocktail</td>
+                    <td>ylläpitäjä</td>
+                </tr>
+                <tr>
+                    <td>Piña Colada</td>
+                    <td>Vaalea rommi</td>
+                    <td>cocktail</td>
+                    <td>ylläpitäjä</td>
+                </tr>
+                <tr>
+                    <td>Sitrusbooli</td>
+                    <td>Vodka</td>
+                    <td>booli</td>
+                    <td>käyt123</td>
+                </tr>
+                <tr>
+                    <td>ÄssäMix</td>
+                    <td>Useita</td>
+                    <td>shotti</td>
+                    <td>ylläpitäjä</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
 </html>
