@@ -24,9 +24,9 @@
                 <li class="active"><a href="drinkit.php">Drinkit</a></li>
             </ul>
 
-            
-            <p>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
-            <button type="button" class="btn btn-default navbar-btn">Ehdota reseptiä</button>
+            <h1>Drinkit</h1>
+            <p><br>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
+            <a href="ehdotus.php"><button type="button" class="btn btn-info">Ehdota reseptiä</button></a>
 
             <div class="container">
                 <table class="table table-striped">
@@ -41,25 +41,25 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>Mojito</td>
+                    <td><a href="mojito.php">Mojito</a> </td>
                     <td>Vaalea rommi</td>
                     <td>cocktail</td>
                     <td>ylläpitäjä</td>
                 </tr>
                 <tr>
-                    <td>Piña Colada</td>
+                    <td><a href="">Piña Colada</a></td>
                     <td>Vaalea rommi</td>
                     <td>cocktail</td>
                     <td>ylläpitäjä</td>
                 </tr>
                 <tr>
-                    <td>Sitrusbooli</td>
+                    <td><a href="">Sitrusbooli</a></td>
                     <td>Vodka</td>
                     <td>booli</td>
                     <td>käyt123</td>
                 </tr>
                 <tr>
-                    <td>ÄssäMix</td>
+                    <td><a href="">ÄssäMix</a></td>
                     <td>Useita</td>
                     <td>shotti</td>
                     <td>ylläpitäjä</td>

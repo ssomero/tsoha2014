@@ -1,18 +1,13 @@
-<!--
-To change this template, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
+<?php ?>
 <html>
     <head>
-        <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap-theme.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
     </head>
     <body>
-        <div class="container">            
+        <div class="container">
             <form class="navbar-form navbar-right" role="form">
                 <div class="form-group">
                     <input type="text" placeholder="Käyttäjätunnus" class="form-control">
@@ -23,16 +18,25 @@ and open the template in the editor.
                 <button type="submit" class="btn btn-success">Kirjaudu sisään!</button>
             </form>
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#">Etusivu</a></li>
+                <li><a href="html-demo.html">Etusivu</a></li>
                 <li><a href="haku.php">Haku</a></li>
-                <li><a href="drinkit.php#">Drinkit</a></li>
+                <li><a href="drinkit.php">Drinkit</a></li>
             </ul>
 
-            <h1>Tervetuloa drinkkiarkistoon!</h1>
-            <p>Täällä voit hakea, selata, ehdottaa ja lisätä drinkkireseptejä. <br>
-                Lisätäksesi drinkkejä sinun täytyy olla rekisteröitynyt käyttäjä. <br>
-                Jos et ole vielä rekisteröitynyt, tee se alla olevaa nappulaa painamalla!</p>
-            <button type="button" class="btn btn-primary">Rekisteröidy</button>
+            <body>
+                <div class="container">
+                    <h1>Reseptin ehdotus</h1>
+                    <form class="form-horizontal" role="form" action="ehdotus.php" method="POST">
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-2 control-label">Nimi</label>
+                            <div class="col-md-3">
+                                <input type="text" class="form-control" id="inputName" name="text" placeholder="drinkin nimi">
+                            </div>
+                        </div>
+
+                </div>
+
+                </form>
         </div>
     </body>
 </html>
