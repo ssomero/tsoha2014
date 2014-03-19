@@ -1,7 +1,7 @@
 <?php ?>
 <html>
     <head>
-        <title></title>
+        <title>Drinkit</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="css/bootstrap.css" rel="stylesheet">
         <link href="css/bootstrap-theme.css" rel="stylesheet">
@@ -24,7 +24,7 @@
                 <li class="active"><a href="drinkit.php">Drinkit</a></li>
             </ul>
 
-            <h1>Drinkit</h1>
+            
             <p>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
             <button type="button" class="btn btn-default navbar-btn">Ehdota reseptiä</button>
 
