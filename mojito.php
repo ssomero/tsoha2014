@@ -30,6 +30,7 @@
                 <div class="row">
                     <div class="col-md-10"><img src="kuva_mojito.jpeg" alt="esimerkkikuva" width="220px" height="300px" align="left"> 
                         <h1>Mojito (cocktail)</h1>
+                        <p>Muita nimiä: -</p>
                         <h2>Ainesosat:</h2>
                         <ul>
                             <li>4cl Vaalea rommi</li>

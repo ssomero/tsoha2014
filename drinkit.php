@@ -26,7 +26,7 @@
 
             <h1>Drinkit</h1>
             <p><br>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
-            <a href="ehdotus.php"><button type="button" class="btn btn-info">Ehdota reseptiä</button></a>
+            <a href="ehdotus.php"><button type="button" class="btn btn-primary">Ehdota reseptiä</button></a>
 
             <div class="container">
                 <table class="table table-striped">
@@ -35,7 +35,7 @@
                 <tr>
                     <th>Nimi</th>
                     <th>Pääainesosa</th>
-                    <th>Juomalaji</th>
+                    <th>Juomatyyppi</th>
                     <th>Lisääjä</th>
                 </tr>
             </thead>
