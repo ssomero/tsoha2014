@@ -1,6 +1,6 @@
-DROP TABLE drinkki;
-DROP TABLE kayttaja;
-DROP TABLE juomalaji;
-DROP TABLE ainesosa;
-DROP TABLE drinkkimixer;
-DROP TABLE vaihtoehtoisnimi;
+DROP TABLE drinkki CASCADE;
+DROP TABLE kayttaja CASCADE;
+DROP TABLE juomalaji CASCADE;
+DROP TABLE ainesosa CASCADE;
+DROP TABLE drinkkimixer CASCADE;
+DROP TABLE vaihtoehtoisnimi CASCADE;

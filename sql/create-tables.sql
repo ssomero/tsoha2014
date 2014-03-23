@@ -19,7 +19,7 @@ drinkki_id serial ,
 nimi varchar(40) NOT NULL ,
 juomalaji_id serial NOT NULL ,
 lisaaja serial ,
-lisaamisaika timestamp(0) DEFAULT current_timestamp,
+lisaamisaika timestamp with time zone NOT NULL DEFAULT NOW(),   
 PRIMARY KEY (drinkki_id) ,
 FOREIGN KEY (lisaaja) REFERENCES kayttaja(kayttaja_id) 
     ON UPDATE CASCADE,
