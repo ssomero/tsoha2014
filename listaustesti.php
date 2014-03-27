@@ -15,7 +15,7 @@ $lista = array("Kissa", "Koira", "Omena", "Banaani", "vesi");
         <li><?php echo $asia; ?></li>
     <?php } ?>
     </ul>
-    <p>Jostain syystä en saanut tietokannasta tänne listausta käyttäjä-taulusta ja aika loppui kesken jotta ongelma olisi ratkennut...
-        <br>Ohjeet tuntuivat aika epäselviltä</p>    
+<!--    <p>Jostain syystä en saanut tietokannasta tänne listausta käyttäjä-taulusta ja aika loppui kesken jotta ongelma olisi ratkennut...
+        <br>Ohjeet tuntuivat aika epäselviltä</p>    -->
   </body>
 </html>

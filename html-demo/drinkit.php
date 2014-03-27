@@ -1,29 +1,8 @@
-<?php ?>
-<html>
-    <head>
-        <title>Drinkit</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="css/bootstrap.css" rel="stylesheet">
-        <link href="css/bootstrap-theme.css" rel="stylesheet">
-        <link href="css/main.css" rel="stylesheet">
-    </head>
-    <body>
-        <div class="container">
-            <form class="navbar-form navbar-right" role="form">
-                <div class="form-group">
-                    <input type="text" placeholder="Käyttäjätunnus" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Salasana" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Kirjaudu sisään!</button>
-            </form>
-            <ul class="nav nav-tabs">
-                <li><a href="html-demo.html">Etusivu</a></li>
-                <li><a href="haku.php">Haku</a></li>
-                <li class="active"><a href="drinkit.php">Drinkit</a></li>
-            </ul>
+<?php 
 
+require '../views/ylapalkki.php'?>
+
+            <div class='container'>
             <h1>Drinkit</h1>
             <p><br>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
             <a href="ehdotus.php"><button type="button" class="btn btn-primary">Ehdota reseptiä</button></a>
@@ -67,5 +46,6 @@
             </tbody>
         </table>
     </div>
+</div>
 </body>
 </html>
