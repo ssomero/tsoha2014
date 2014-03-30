@@ -11,3 +11,5 @@ INSERT INTO vaihtoehtoisnimi VALUES((select drinkki_id from drinkki where nimi='
             'Cuba Libre');
 INSERT INTO ainesosa (nimi) VALUES ('rommi');
 INSERT INTO ainesosa (nimi) VALUES ('CocaCola');
+INSERT INTO kayttaja (kayttajanimi, salasana, email, etunimi, sukunimi)
+    VALUES ('käyt123', 'kissa', 'kissa@koira.com', 'Ano', 'Nyymi');

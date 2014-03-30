@@ -30,7 +30,11 @@
                         class='active'
                     <?php endif; ?>
                     ><a href="drinkit.php">Drinkit</a></li>
+                <?php if(!onkoKirjautunut()) : ?>
                 <li><a href="login.php">Kirjaudu sisään</a></li>
+                <?php else : ?>
+                <li><a href="logout.php">Kirjaudu ulos</a></li>
+                <?php endif; ?>
             </ul>
         </div>
         <div class="container">
