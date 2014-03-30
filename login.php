@@ -8,25 +8,28 @@ if (empty($_POST["username"])) {
         'virhe' => "Kirjautuminen epäonnistui! Et antanut käyttäjänimeä.",
     ));
 }
-$kayttaja = $_POST["username"];
+$kayttajatunnus = $_POST["username"];
 
 if (empty($_POST["password"])) {
     naytaNakyma("login.php", array(
-        'kayttaja' => $kayttaja,
+        'kayttaja' => $kayttajatunnus,
         'virhe' => "Kirjautuminen epäonnistui! Et antanut salasanaa.",
     ));
 }
 $salasana = $_POST["password"];
 
 
-$kayt = new Kayttaja();
-$kayt = $kayt->etsiKayttajaTunniksilla($kayttaja, $salasana);
-if ($kayt != null) {
+$kayttaja = new Kayttaja();
+$kayttaja = $kayttaja->etsiKayttajaTunnuksilla($kayttajatunnus, $salasana);
+
+if ($kayttaja != null) {
+    
+    $_SESSION['kirjautunut'] = $kayttajatunnus;
     header('Location: index.php');
 } else {
     /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
     naytaNakyma("login.php", array(
-        'kayttaja' => $kayttaja,
+        'kayttaja' => $kayttajatunnus,
         'virhe' => "Väärä käyttäjänimi tai salasana!",
     ));
 }

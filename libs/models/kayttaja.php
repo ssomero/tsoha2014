@@ -41,7 +41,7 @@ class Kayttaja {
         return $tulokset;
     }
     
-    public function etsiKayttajaTunniksilla($kayttajanimi, $salasana) {
+    public function etsiKayttajaTunnuksilla($kayttajanimi, $salasana) {
         $sql = "SELECT * FROM  kayttaja "
                 . "WHERE kayttajanimi=? AND salasana=? LIMIT 1";
         $kysely = getTietokantayhteys()->prepare($sql);
