@@ -1,4 +1,4 @@
-<?php require '../views/ylapalkki.php' ?>
+<?php require '../views/sivupohja.php' ?>
 
 <div class='container'>
 <h1>Drinkkireseptien hakeminen</h1>

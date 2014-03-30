@@ -1,4 +1,5 @@
 <?php
+require 'libs/tietokantayhteys.php';
 
 class Kayttaja {
 
@@ -38,6 +39,28 @@ class Kayttaja {
             $tulokset[] = $kayttaja;
         }
         return $tulokset;
+    }
+    
+    public function etsiKayttajaTunniksilla($kayttajanimi, $salasana) {
+        $sql = "SELECT * FROM  kayttaja "
+                . "WHERE kayttajanimi=? AND salasana=? LIMIT 1";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($kayttajanimi, $salasana));
+        
+        $tulos = $kysely->fetchObject();
+        if($tulos == null) {
+            return null;
+        } else {
+            $kayttaja = new Kayttaja();
+            $kayttaja->setKayttaja_id($tulos->kayttaja_id);
+            $kayttaja->setKayttajanimi($tulos->kayttajanimi);
+            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setEmail($tulos->email);
+            $kayttaja->setEtunimi($tulos->etunimi);
+            $kayttaja->setSukunimi($tulos->sukunimi);
+            
+            return $kayttaja;
+        }
     }
 
     public function setKayttaja_id($kayttaja_id) {

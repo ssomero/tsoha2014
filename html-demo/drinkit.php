@@ -1,6 +1,6 @@
 <?php 
 
-require '../views/ylapalkki.php'?>
+require '../views/sivupohja.php'?>
 
             <div class='container'>
             <h1>Drinkit</h1>
