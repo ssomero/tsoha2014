@@ -3,6 +3,9 @@
 require_once 'libs/utilities.php';
 require 'libs/models/kayttaja.php';
 
+if(!isset($_POST['submitted'])) {
+    naytaNakyma('login.php');
+}
 if (empty($_POST["username"])) {
     naytaNakyma("login.php", array(
         'virhe' => "Kirjautuminen epäonnistui! Et antanut käyttäjänimeä.",
@@ -23,7 +26,7 @@ $kayttaja = new Kayttaja();
 $kayttaja = $kayttaja->etsiKayttajaTunnuksilla($kayttajatunnus, $salasana);
 
 if ($kayttaja != null) {
-    
+
     $_SESSION['kirjautunut'] = $kayttajatunnus;
     header('Location: index.php');
 } else {

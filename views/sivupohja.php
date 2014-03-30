@@ -40,7 +40,7 @@
         <div class="container">
             <?php require 'views/' . $sivu; ?>
         </div>
-        <div>
+        <div class="container">
             <?php if (!empty($data->virhe)): ?>
                 <div class="alert alert-danger"><?php echo $data->virhe; ?></div>
             <?php endif; ?>
