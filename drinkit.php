@@ -1,5 +1,7 @@
 <?php 
 require_once 'libs/utilities.php';
-naytaNakyma('drinkit.php')
+require_once 'libs/models/Drinkki.php';
+$drinkit = Drinkki::listaaKaikkiDrinkit();
+naytaNakyma('drinkit.php', array('drinkit' => $drinkit));
 ?>
 
