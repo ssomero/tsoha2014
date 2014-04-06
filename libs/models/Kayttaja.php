@@ -1,5 +1,6 @@
 <?php
-require 'libs/tietokantayhteys.php';
+
+require_once 'libs/tietokantayhteys.php';
 
 class Kayttaja {
 
@@ -86,5 +87,29 @@ class Kayttaja {
     public function setSukunimi($sukunimi) {
         $this->sukunimi = $sukunimi;
     }
+    public function getKayttaja_id() {
+        return $this->kayttaja_id;
+    }
+
+    public function getKayttajanimi() {
+        return $this->kayttajanimi;
+    }
+
+    public function getSalasana() {
+        return $this->salasana;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function getEtunimi() {
+        return $this->etunimi;
+    }
+
+    public function getSukunimi() {
+        return $this->sukunimi;
+    }
+
 
 }

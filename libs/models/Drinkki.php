@@ -1,6 +1,6 @@
 <?php
 
-require 'libs/tietokantayhteys.php';
+require_once 'libs/tietokantayhteys.php';
 
 class Drinkki {
 
@@ -9,6 +9,7 @@ class Drinkki {
     private $juomalaji_id;
     private $lisaaja;
     private $lisaamisaika;
+    private $virheet = array();
 
     public function _construct($drinkki_id, $nimi, $juomalaji_id, $lisaaja, $lisaamisaika) {
         $this->drinkki_id = $drinkki_id;
@@ -17,14 +18,43 @@ class Drinkki {
         $this->lisaaja = $lisaaja;
         $this->lisaamisaika = $lisaamisaika;
     }
+
+    public function onkoKelvollinen() {
+        if(trim($this->nimi)==null || trim($this->nimi=='')) {
+            $this->virheet['nimi'] = "Drinkistä puuttuu nimi";
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
     
+    public function lisaaKantaan() {
+        $sql = "INSERT INTO drinkki(nimi, juomalaji_id, lisaaja, lisaamisaika)"
+                . "VALUES(?, ?, ?, ?) RETURNING drinkki_id";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $ok = $kysely->execute(array($this->getNimi(), $this->getJuomalaji_id(),
+            $_SESSION['kirjautunut'], 'NOW()'));
+        if($ok) {
+            $this->drinkki_id = $kysely->fetchColumn();
+        }
+        return $ok;
+    }
+    
+    public function muokkaaDrinkkia() {
+        $sql = "UPDATE drinkki SET nimi = ?, juomalaji_id=?"
+                . "WHERE drinkki_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->nimi, $this->juomalaji_id, $this->drinkki_id));             
+    }
+
     public static function listaaKaikkiDrinkit() {
         $sql = "SELECT * FROM drinkki";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
-        
+
         $tulokset = array();
-        
+
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
             $drinkki = new Drinkki();
             $drinkki->setDrinkki_id($tulos->drinkki_id);
@@ -37,15 +67,20 @@ class Drinkki {
         }
         return $tulokset;
     }
-    
-    public function getID($drinkki_id) {
+
+    public static function haku($hakusana) {
+        $sql = "SELECT drinkki_id, nimi FROM drinkki, drinkkimixer, ainesosa"
+                . "WHERE drinkki.drinkki_id=";
+    }
+
+    public static function haeIDlla($drinkki_id) {
         $sql = "SELECT * FROM drinkki WHERE drinkki_id = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($this->drinkki_id));
+        $kysely->execute(array($drinkki_id));
 
         $tulos = $kysely->fetchObject();
-        
-        if($tulos == null) {
+
+        if ($tulos == null) {
             return null;
         } else {
             $drinkki = new Drinkki();
@@ -53,8 +88,8 @@ class Drinkki {
             $drinkki->setNimi($tulos->nimi);
             $drinkki->setJuomalaji_id($tulos->juomalaji_id);
             $drinkki->setLisaaja($tulos->lisaaja);
-            $drinkki->setLisaamisaika($tulos->lisaamisaika);       
-            
+            $drinkki->setLisaamisaika($tulos->lisaamisaika);
+
             return $drinkki;
         }
     }
@@ -63,20 +98,19 @@ class Drinkki {
         $sql = "SELECT kayttajanimi FROM kayttaja WHERE kayttaja_id=?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($this->lisaaja));
-        
+
         $kayttaja = $kysely->fetchObject();
-        return $kayttaja->kayttajanimi;      
+        return $kayttaja->kayttajanimi;
     }
-    
+
     public function getJuomalaji() {
-        $sql= "SELECT nimi FROM juomalaji WHERE juomalaji_id=?";
-        $kysely= getTietokantayhteys()->prepare($sql);
+        $sql = "SELECT nimi FROM juomalaji WHERE juomalaji_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($this->juomalaji_id));
-        
+
         $juomalaji = $kysely->fetchObject();
         return $juomalaji->nimi;
     }
-
 
     public function setDrinkki_id($drinkki_id) {
         $this->drinkki_id = $drinkki_id;
@@ -117,8 +151,11 @@ class Drinkki {
     public function getLisaamisaika() {
         return $this->lisaamisaika;
     }
-
-
+    
+    public function getVirheet() {
+        return $this->virheet;
+    }
 
 }
+
 ?>

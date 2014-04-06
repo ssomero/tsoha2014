@@ -1,7 +1,7 @@
 <?php
 
 require_once 'libs/utilities.php';
-require 'libs/models/kayttaja.php';
+require 'libs/models/Kayttaja.php';
 
 if(!isset($_POST['submitted'])) {
     naytaNakyma('login.php');
@@ -27,7 +27,7 @@ $kayttaja = $kayttaja->etsiKayttajaTunnuksilla($kayttajatunnus, $salasana);
 
 if ($kayttaja != null) {
 
-    $_SESSION['kirjautunut'] = $kayttajatunnus;
+    $_SESSION['kirjautunut'] = $kayttaja->getKayttaja_id();
     header('Location: index.php');
 } else {
     /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */

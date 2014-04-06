@@ -22,4 +22,10 @@ function onkoKirjautunut() {
         return false;
     }
 }
+
+function currentUser() {
+    if(isset($_SESSION['kirjautunut'])) {
+        return $_SESSION['kirjautunut'];
+    }
+}
 ?>
