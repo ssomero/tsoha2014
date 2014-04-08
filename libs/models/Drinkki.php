@@ -47,6 +47,12 @@ class Drinkki {
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($this->nimi, $this->juomalaji_id, $this->drinkki_id));             
     }
+    
+    public function poistaDrinkki() {
+        $sql = "DELETE FROM drinkki WHERE drinkki_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->drinkki_id));
+    }
 
     public static function listaaKaikkiDrinkit() {
         $sql = "SELECT * FROM drinkki";

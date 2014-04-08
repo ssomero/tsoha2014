@@ -14,6 +14,7 @@ $uusidrinkki->setNimi($_POST['drinkinNimi']);
 $uusidrinkki->setJuomalaji_id($_POST['juomalaji_id']);
 if($uusidrinkki->onkoKelvollinen()) {
     $uusidrinkki->lisaaKantaan();
+    $_SESSION['viesti'] = "Drinkki lisätty onnistuneesti!";
     header('Location: drinkit.php');
 } else {
     naytaNakyma('lisays.php', array('virheet' => $uusidrinkki->getVirheet()));

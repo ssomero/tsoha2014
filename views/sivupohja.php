@@ -38,6 +38,12 @@
             </ul>
         </div>
         <div class="container">
+            <?php if(!empty($_SESSION['viesti'])): ?>
+            <div class="alert alert-success"><?php echo $_SESSION['viesti'];?></div>
+            <?php unset($_SESSION['viesti']);?>
+            <?php endif; ?>
+        </div>
+        <div class="container">
             <?php require 'views/' . $sivu; ?>
         </div>
         <div class="container">
@@ -52,5 +58,6 @@
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
+        
     </body>
 </html>
