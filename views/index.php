@@ -4,7 +4,7 @@
                 Lisätäksesi drinkkejä sinun täytyy olla rekisteröitynyt käyttäjä. <br>
             </p>
             <?php if(!onkoKirjautunut()):?>
-            <button type="button" class="btn btn-primary">Rekisteröidy</button>
+            <a href="rekisteroidy.php"><button type="button" class="btn btn-primary">Rekisteröidy</button></a>
             <?php endif; ?>
         </div>
 

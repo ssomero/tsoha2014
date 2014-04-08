@@ -1,5 +1,4 @@
 <?php
-
 require_once 'libs/models/Drinkki.php';
 require_once 'libs/models/Juomalaji.php';
 
