@@ -13,6 +13,6 @@
                 <?php endforeach; ?>
             </select>
         </div>    
-        <button type="submit" class="btn btn-success">Lisaa drinkki</button>
+        <button type="submit" class="btn btn-success">Lisää drinkki</button>
     </form>
 </div>

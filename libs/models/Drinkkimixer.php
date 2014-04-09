@@ -1,5 +1,5 @@
 <?php
-require_once 'libs/tietokantaytheys.php';
+require_once 'libs/tietokantayhteys.php';
 
 class Drinkkimixer {
     private $drinkki_id;
@@ -32,6 +32,15 @@ class Drinkkimixer {
         } return $tulokset;
     }
     
+    public function lisaaKantaan() {
+        $sql = "INSERT INTO drinkkimixer(ainesosa_id, drinkki_id, yksikko, maara) VALUES(?, ?, ?, ?)";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->getAinesosa_id(), $this->getDrinkki_id(), $this->getYksikko(), $this->getMaara()));        
+    }
+    
+    
+
+
     public function getDrinkki_id() {
         return $this->drinkki_id;
     }
