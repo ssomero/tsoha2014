@@ -31,7 +31,6 @@ class Juomalaji {
         $sql = "SELECT * FROM juomalaji";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
-
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
             $juomalaji = new Juomalaji();

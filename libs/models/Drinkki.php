@@ -74,10 +74,7 @@ class Drinkki {
         return $tulokset;
     }
     
-    public function etsiAinesosat() {
-        
-        
-    }
+   
 
     public static function haku($hakusana) {
         $sql = "SELECT drinkki_id, nimi FROM drinkki, drinkkimixer, ainesosa"
