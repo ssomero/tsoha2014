@@ -9,14 +9,16 @@ class Drinkki {
     private $juomalaji_id;
     private $lisaaja;
     private $lisaamisaika;
+    private $ohjeet;
     private $virheet = array();
 
-    public function _construct($drinkki_id, $nimi, $juomalaji_id, $lisaaja, $lisaamisaika) {
+    public function _construct($drinkki_id, $nimi, $juomalaji_id, $lisaaja, $lisaamisaika, $ohjeet) {
         $this->drinkki_id = $drinkki_id;
         $this->nimi = $nimi;
         $this->juomalaji_id = $juomalaji_id;
         $this->lisaaja = $lisaaja;
         $this->lisaamisaika = $lisaamisaika;
+        $this->ohjeet = $ohjeet;
     }
 
     public function onkoKelvollinen() {
@@ -163,6 +165,16 @@ class Drinkki {
     public function getVirheet() {
         return $this->virheet;
     }
+    
+    public function setOhjeet($ohjeet) {
+        $this->ohjeet = $ohjeet;
+    }
+
+    public function getOhjeet() {
+        return $this->ohjeet;
+    }
+
+
 
 }
 

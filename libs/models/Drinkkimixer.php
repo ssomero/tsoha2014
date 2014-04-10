@@ -13,14 +13,15 @@ class Drinkkimixer {
         $this->maara = $maara;
         $this->yksikko = $yksikko;
     }
+   
     
-    public function listaaDrinkinAinesosat() {
-        $sql = "SELECT * FROM drinkkimixer"
+    public static function listaaDrinkinAinesosat($drinkki_id) {
+        $sql = "SELECT * FROM drinkkimixer "
                 . "WHERE drinkki_id=?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($this->drinkki_id));
+        $kysely->execute(array($drinkki_id));
         
-        $tulokset[] = array();
+        $tulokset = array();
         
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
             $drinkkimix = new Drinkkimixer();
@@ -39,7 +40,14 @@ class Drinkkimixer {
     }
     
     
+    public static function getAinesosanNimi($ainesosa_id) {
+       $sql = "SELECT nimi FROM ainesosa WHERE ainesosa_id=?";
+       $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($ainesosa_id));
 
+        $ainesosa = $kysely->fetchObject();
+        return $ainesosa->nimi;
+    }
 
     public function getDrinkki_id() {
         return $this->drinkki_id;
