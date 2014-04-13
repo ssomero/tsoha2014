@@ -6,13 +6,14 @@
         <li><?php echo $drinkkimix->getMaara()?> <?php echo $drinkkimix->getYksikko()?> <?php echo $drinkkimix->getAinesosanNimi($drinkkimix->getAinesosa_id())?> </li>            
         <?php endforeach; ?>
     </ul>
-    <p><?php echo $data->drinkki->getOhjeet() ?></p>
+    <h3>Valmistusohjeet:</h3>
+    <p><?php echo $data->drinkki->getOhjeet(); ?></p>
 
     <?php if (currentUser() == '1'): ?>
 
         <form role="form" action="poisto.php" method="POST">
             <div class="form-group">
-                <a href="drinkit.php"><button type="button" class="btn btn-default">Palaa</button></a>
+                <a href="drinkit.php"><button type="button" class="btn btn-default">Palaa drinkkeihin</button></a>
             </div>
             <div class="form-group">
                 <a href="muokkaus.php?id=<?php echo $data->drinkki->getDrinkki_id(); ?>">
@@ -24,6 +25,10 @@
             </div>
 
         </form>
+    <?php else : ?>
+    <div class="form-group">
+                <a href="drinkit.php"><button type="button" class="btn btn-default">Palaa drinkkilistaan</button></a>
+            </div>
     <?php endif; ?>   
 
 </div>

@@ -38,7 +38,7 @@
             else {
                 var ainesdiv = document.createElement('div');
                 var valintadiv = document.createElement('div');
-                ainesdiv.innerHTML = "<input type='text' placeholder='Määrä' name='maarat[]'><input type='text' placeholder='cl, dl...' name='yksikot[]'><input type='text' placeholder='Ainesosa' name='ainekset[]'>";
+                ainesdiv.innerHTML = "<input type='text' class='form-control' placeholder='Määrä' name='maarat[]'> <input type='text' class='form-control' placeholder='cl, dl...' name='yksikot[]'> <input type='text' class='form-control' placeholder='Ainesosa' name='ainekset[]'>";
 
                 document.getElementById(divName).appendChild(ainesdiv);
                 laskuri++;

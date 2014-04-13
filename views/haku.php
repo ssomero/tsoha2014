@@ -1,6 +1,7 @@
 <div class="container">
     <h1>Drinkkireseptien hakeminen</h1>
-    <p>Anna hakusanaksi esim. drinkin nimi tai jokin ainesosa</p>
+    <p>Anna hakusanaksi esim. drinkin nimi tai jokin ainesosa
+        <br>(tällä hetkellä vain nimellä hakeminen onnistuu)</p>
 
     <form class="navbar-form navbar-left" role="search" action="haku.php" method="POST">
         <div class="form-group">

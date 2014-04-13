@@ -31,11 +31,11 @@ class Drinkki {
     }
     
     public function lisaaKantaan() {
-        $sql = "INSERT INTO drinkki(nimi, juomalaji_id, lisaaja, lisaamisaika)"
-                . "VALUES(?, ?, ?, ?) RETURNING drinkki_id";
+        $sql = "INSERT INTO drinkki(nimi, juomalaji_id, lisaaja, lisaamisaika, ohjeet)"
+                . "VALUES(?, ?, ?, ?, ?) RETURNING drinkki_id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array($this->getNimi(), $this->getJuomalaji_id(),
-            $_SESSION['kirjautunut'], 'NOW()'));
+            $_SESSION['kirjautunut'], 'NOW()', $this->getOhjeet()));
         if($ok) {
             $this->drinkki_id = $kysely->fetchColumn();
         }
@@ -129,6 +129,7 @@ class Drinkki {
             $drinkki->setJuomalaji_id($tulos->juomalaji_id);
             $drinkki->setLisaaja($tulos->lisaaja);
             $drinkki->setLisaamisaika($tulos->lisaamisaika);
+            $drinkki->setOhjeet($tulos->ohjeet);
 
             return $drinkki;
         }

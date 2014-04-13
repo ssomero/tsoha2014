@@ -30,6 +30,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $yksikot = $_POST['yksikot'];
     $apu = 0;
     foreach ($ainekset as $aine) {
+        if(empty($aine)) {
+            naytaNakyma('lisays.php', array('virhe' => "Ainesosalta puuttuu nimi!"));
+        }
+        if(empty($maarat[$apu])) {
+            naytaNakyma('lisays.php', array('virhe' => "Ainesosalta puuttuu määrä!"));
+        }
+        if(empty($yksikot[$apu])) {
+            naytaNakyma('lisays.php', array('virhe' => "Ainesosalta puuttuu yksikkö!"));
+        }
         $aine = strtolower($aine);
         if (Ainesosa::onkoOlemassa($aine) > 0) {
             $ainesosa_id = Ainesosa::onkoOlemassa($aine);            
