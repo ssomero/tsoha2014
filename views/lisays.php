@@ -25,7 +25,9 @@
             <label for="inputOhjeet">Valmistusohjeet</label>
             <textarea class="form-control" rows="3" name="ohjeet"></textarea>
         </div>    
-        <button type="submit" class="btn btn-success">Lisää drinkki</button>
+        <button type="submit" class="btn btn-success">Lisää drinkki</button>        
+        <a href="drinkit.php"><button type="button" class="btn btn-default">Peruuta</button></a>
+
     </form>
 
     <script>

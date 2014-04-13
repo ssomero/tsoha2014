@@ -17,10 +17,13 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </select>
+            <br>
+            
             <label for="inputOhjeet">Valmistusohjeet</label>
-            <textarea class="form-control" rows="3" name="ohjeet"></textarea>
+            <textarea class="form-control" rows="3" name="ohjeet"><?php echo $data->drinkki->getOhjeet(); ?></textarea>
         </div>    
         <button type="submit" class="btn btn-success">Muokkaa drinkkiä</button>
+        <a href="drinkki.php?id=<?php echo $data->drinkki->getDrinkki_id(); ?>"><button type="button" class="btn btn-default">Peruuta</button></a>
     </form>
 </div>
 
