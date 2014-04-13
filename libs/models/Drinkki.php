@@ -1,5 +1,4 @@
 <?php
-
 require_once 'libs/tietokantayhteys.php';
 
 class Drinkki {
@@ -44,10 +43,10 @@ class Drinkki {
     }
     
     public function muokkaaDrinkkia() {
-        $sql = "UPDATE drinkki SET nimi = ?, juomalaji_id=?"
+        $sql = "UPDATE drinkki SET nimi = ?, juomalaji_id=?, ohjeet=?"
                 . "WHERE drinkki_id=?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($this->nimi, $this->juomalaji_id, $this->drinkki_id));             
+        $kysely->execute(array($this->nimi, $this->juomalaji_id, $this->ohjeet, $this->drinkki_id));             
     }
     
     public function poistaDrinkki() {
@@ -57,7 +56,8 @@ class Drinkki {
     }
 
     public static function listaaKaikkiDrinkit() {
-        $sql = "SELECT * FROM drinkki";
+        $sql = "SELECT * FROM drinkki " 
+                . "ORDER BY nimi";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
 
@@ -70,6 +70,7 @@ class Drinkki {
             $drinkki->setJuomalaji_id($tulos->juomalaji_id);
             $drinkki->setLisaaja($tulos->lisaaja);
             $drinkki->setLisaamisaika($tulos->lisaamisaika);
+            $drinkki->setOhjeet($tulos->ohjeet);
 
             $tulokset[] = $drinkki;
         }
@@ -79,11 +80,40 @@ class Drinkki {
    
 
     public static function haku($hakusana) {
-        $sql = "SELECT drinkki_id, nimi FROM drinkki, drinkkimixer, ainesosa"
-                . "WHERE drinkki.drinkki_id=";
+//        $haku = strtolower($hakusana);
+        $sql = "SELECT * FROM drinkki "
+                . "WHERE "
+                . "nimi LIKE ?";
+        
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array("%$hakusana%"));
+        
+        $tulokset = array();        
+                
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $drinkki = new Drinkki();
+            $drinkki->setDrinkki_id($tulos->drinkki_id);
+            $drinkki->setNimi($tulos->nimi);
+            $drinkki->setJuomalaji_id($tulos->juomalaji_id);
+            $drinkki->setLisaaja($tulos->lisaaja);
+            $drinkki->setLisaamisaika($tulos->lisaamisaika);
+            $drinkki->setOhjeet($tulos->ohjeet);
+
+            $tulokset[] = $drinkki;
+        } return $tulokset;
     }
 
-    public static function haeIDlla($drinkki_id) {
+    public static function onkoNimiOlemassa($nimi) {
+        $sql = "SELECT count(*) FROM drinkki WHERE nimi=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($nimi));
+        $tulos = $kysely->fetchColumn();
+        if($tulos > 0) {
+            return true;
+        } else { return FALSE; }
+    }
+
+        public static function haeIDlla($drinkki_id) {
         $sql = "SELECT * FROM drinkki WHERE drinkki_id = ?";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array($drinkki_id));

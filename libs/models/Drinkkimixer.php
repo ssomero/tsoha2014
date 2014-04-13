@@ -39,6 +39,12 @@ class Drinkkimixer {
         $kysely->execute(array($this->getAinesosa_id(), $this->getDrinkki_id(), $this->getYksikko(), $this->getMaara()));        
     }
     
+    public function muokkaaDrinkkiMix() {
+        $sql = "UPDATE drinkkimixer SET ainesosa_id = ?, maara=?, yskikko=?"
+                . "WHERE drinkki_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->ainesosa_id, $this->maara, $this->yksikko));             
+    }
     
     public static function getAinesosanNimi($ainesosa_id) {
        $sql = "SELECT nimi FROM ainesosa WHERE ainesosa_id=?";

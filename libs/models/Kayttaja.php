@@ -1,5 +1,4 @@
 <?php
-
 require_once 'libs/tietokantayhteys.php';
 
 class Kayttaja {

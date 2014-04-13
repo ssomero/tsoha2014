@@ -1,4 +1,5 @@
 <?php
+require_once 'libs/utilities.php';
 require_once 'libs/models/Drinkki.php';
 require_once 'libs/models/Juomalaji.php';
 
@@ -7,6 +8,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($drinkki->onkoKelvollinen()) {
         $drinkki->poistaDrinkki();
         header('Location: drinkit.php');
+        $_SESSION['viesti'] = "Poisto onnistui";
     }
 }
 ?>

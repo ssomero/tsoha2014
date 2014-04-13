@@ -8,11 +8,14 @@ require_once 'libs/models/Juomalaji.php';
 //katsotaan onko sivulle tultu post-pyynnöllä
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $drinkki = Drinkki::haeIDlla($_POST['id']);
-    $drinkki->setNimi($_POST['drinkinNimi']);
+    $uusinimi = strtolower($_POST['drinkinNimi']);
+    $drinkki->setNimi($uusinimi);    
     $drinkki->setJuomalaji_id($_POST['juomalaji_id']);
+    $drinkki->setOhjeet($_POST['ohjeet']);
     if ($drinkki->onkoKelvollinen()) {
         $drinkki->muokkaaDrinkkia();
         header('Location: drinkit.php');
+        $_SESSION['viesti'] = "Muokkaus onnistui";
     } else {
         naytaNakyma('drinkit.php', array('virhe' => "Väärin"));
     }

@@ -17,6 +17,8 @@
                     <?php endif; ?>
                 <?php endforeach; ?>
             </select>
+            <label for="inputOhjeet">Valmistusohjeet</label>
+            <textarea class="form-control" rows="3" name="ohjeet"></textarea>
         </div>    
         <button type="submit" class="btn btn-success">Muokkaa drinkkiä</button>
     </form>

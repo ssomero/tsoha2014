@@ -5,6 +5,8 @@
     <?php if(isset($_SESSION['kirjautunut'])): ?>
     
     <a href="lisays.php"><button type="button" class="btn btn-primary">Lisää resepti</button></a>
+    <?php else : ?>
+    <a href="ehdotus.php"><button type="button" class="btn btn-primary">Ehdota reseptiä</button></a>
     <?php endif; ?>
     
     
@@ -21,7 +23,7 @@
             <tbody>
                 <?php foreach ($data->drinkit as $drinkki): ?>
                 <tr>
-                    <td><a href="drinkki.php?id=<?php echo $drinkki->getDrinkki_id()?>"><?php echo $drinkki->getNimi();?></a></td>
+                    <td><a href="drinkki.php?id=<?php echo $drinkki->getDrinkki_id()?>"><?php echo ucfirst($drinkki->getNimi());?></a></td>
                     <td><?php echo $drinkki->getJuomalaji();?></td>
                     <td><?php echo $drinkki->getKayttaja();?></td>
                     <td><?php echo date('d-m-Y H:i',strtotime($drinkki->getLisaamisaika()));?></td>

@@ -1,5 +1,5 @@
 <div class="container">
-    <h2><?php echo $data->drinkki->getNimi(); ?> (<?php echo $data->drinkki->getJuomalaji(); ?>)</h2>
+    <h2><?php echo ucfirst($data->drinkki->getNimi()); ?> (<?php echo $data->drinkki->getJuomalaji(); ?>)</h2>
     <h3>Ainesosat:</h3>  
     <ul>
         <?php foreach ($data->drinkkimix as $drinkkimix): ?>

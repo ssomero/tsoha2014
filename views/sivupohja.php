@@ -8,16 +8,16 @@
     </head>
     <body>
         <div class="container">            
-<!--            <form class="navbar-form navbar-right" role="form" action="login.php" method="POST">
-                <div class="form-group">
-                    <input type="text" placeholder="Käyttäjätunnus" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="Salasana" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Kirjaudu sisään!</button>
-            </form>-->
-            <ul class="nav nav-tabs">
+            <!--            <form class="navbar-form navbar-right" role="form" action="login.php" method="POST">
+                            <div class="form-group">
+                                <input type="text" placeholder="Käyttäjätunnus" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Salasana" class="form-control">
+                            </div>
+                            <button type="submit" class="btn btn-success">Kirjaudu sisään!</button>
+                        </form>-->
+            <ul class="nav navbar-nav">
                 <li <?php if (basename($_SERVER['PHP_SELF']) == 'index.php'): ?>
                     class='active'
                     <?php endif; ?>
@@ -30,17 +30,20 @@
                         class='active'
                     <?php endif; ?>
                     ><a href="drinkit.php">Drinkit</a></li>
-                <?php if(!onkoKirjautunut()) : ?>
-                <li><a href="login.php">Kirjaudu sisään</a></li>
+
+            </ul>
+            <ul class="nav navbar-right">
+                <?php if (!onkoKirjautunut()) : ?>
+                    <li><a href="login.php">Kirjaudu sisään</a></li>
                 <?php else : ?>
-                <li><a href="logout.php">Kirjaudu ulos</a></li>
+                    <li><a href="logout.php">Kirjaudu ulos</a></li>
                 <?php endif; ?>
             </ul>
         </div>
         <div class="container">
-            <?php if(!empty($_SESSION['viesti'])): ?>
-            <div class="alert alert-success"><?php echo $_SESSION['viesti'];?></div>
-            <?php unset($_SESSION['viesti']);?>
+            <?php if (!empty($_SESSION['viesti'])): ?>
+                <div class="alert alert-success"><?php echo $_SESSION['viesti']; ?></div>
+                <?php unset($_SESSION['viesti']); ?>
             <?php endif; ?>
         </div>
         <div class="container">
@@ -53,11 +56,11 @@
         </div>
         <div class="container">
             <?php if (!empty($data->virheet)): ?>
-            <?php foreach ($data->virheet as $virhe): ?>
-                <div class="alert alert-danger"><?php echo $virhe; ?></div>
+                <?php foreach ($data->virheet as $virhe): ?>
+                    <div class="alert alert-danger"><?php echo $virhe; ?></div>
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        
+
     </body>
 </html>

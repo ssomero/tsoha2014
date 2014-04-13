@@ -1,6 +1,7 @@
  
 <?php
 require_once 'libs/utilities.php';
-naytaNakyma('index.php');
+$kayttaja = $_SESSION['kayttajanNimi'];
+naytaNakyma('index.php', array('kayttaja' => $kayttaja));
 
 ?>

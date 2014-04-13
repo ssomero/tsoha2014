@@ -28,6 +28,7 @@ $kayttaja = $kayttaja->etsiKayttajaTunnuksilla($kayttajatunnus, $salasana);
 if ($kayttaja != null) {
 
     $_SESSION['kirjautunut'] = $kayttaja->getKayttaja_id();
+    $_SESSION['kayttajanNimi'] = $kayttaja->getEtunimi();
     header('Location: index.php');
 } else {
     /* Väärän tunnuksen syöttänyt saa eteensä kirjautumislomakkeen. */
