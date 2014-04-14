@@ -33,6 +33,19 @@ class Drinkkimixer {
         } return $tulokset;
     }
     
+    // metodi tarkastaa onko ainesosa käytössä muissa drinkeissä 
+//    public static function onkoAinesosaaMuualla($ainesosa_id) {
+//        $sql = "SELECT count(*) FROM drinkkimixer WHERE ainesosa_id=?";
+//        $kysely = getTietokantayhteys()->prepare($sql);
+//        $kysely->execute($ainesosa_id);
+//        $tulos = $kysely->fetchColumn();
+//        if($tulos > 1) {
+//            return true;
+//        } else { return false; }
+//    }
+
+    
+
     public function lisaaKantaan() {
         $sql = "INSERT INTO drinkkimixer(ainesosa_id, drinkki_id, yksikko, maara) VALUES(?, ?, ?, ?)";
         $kysely = getTietokantayhteys()->prepare($sql);
