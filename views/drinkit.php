@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>Drinkit</h1>
-    <p><br>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
+    <h2>Drinkit</h2>
+    <p>Tässä lista Drinkkiarkistosta löytyvistä resepteistä</p>
     
     <?php if(isset($_SESSION['kirjautunut'])): ?>
     
@@ -25,7 +25,11 @@
                 <tr>
                     <td><a href="drinkki.php?id=<?php echo $drinkki->getDrinkki_id()?>"><?php echo ucfirst($drinkki->getNimi());?></a></td>
                     <td><?php echo $drinkki->getJuomalaji();?></td>
+                    <?php if($drinkki->getKayttaja()==null): ?>
+                    <td> ------- </td>
+                    <?php else: ?>
                     <td><?php echo $drinkki->getKayttaja();?></td>
+                    <?php endif; ?>
                     <td><?php echo date('d-m-Y H:i',strtotime($drinkki->getLisaamisaika()));?></td>
                 </tr>
                 <?php endforeach; ?>

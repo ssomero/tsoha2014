@@ -30,8 +30,10 @@
                         class='active'
                     <?php endif; ?>
                     ><a href="drinkit.php">Drinkit</a></li>
-
-            </ul>
+                <?php if(currentUser()== '1'): ?>
+                <li><a href="kayttajat.php">Käyttäjät</a></li>
+                <?php endif; ?>
+            </ul>            
             <ul class="nav navbar-right">
                 <?php if (!onkoKirjautunut()) : ?>
                     <li><a href="login.php">Kirjaudu sisään</a></li>
@@ -39,11 +41,22 @@
                     <li><a href="logout.php">Kirjaudu ulos</a></li>
                 <?php endif; ?>
             </ul>
-        </div>
+            <ul class="nav navbar-right">
+                <?php if (onkoKirjautunut()): ?>
+                    <li><a href="omasivu.php">Muokkaa omia käyttäjätietoja</a></li>
+                <?php endif; ?>
+            </ul>
+        </div>        
         <div class="container">
             <?php if (!empty($_SESSION['viesti'])): ?>
                 <div class="alert alert-success"><?php echo $_SESSION['viesti']; ?></div>
                 <?php unset($_SESSION['viesti']); ?>
+            <?php endif; ?>
+        </div>
+        <div class="container">
+            <?php if (!empty($_SESSION['virhe'])): ?>
+                <div class="alert alert-warning"><?php echo $_SESSION['virhe']; ?></div>
+                <?php unset($_SESSION['virhe']); ?>
             <?php endif; ?>
         </div>
         <div class="container">

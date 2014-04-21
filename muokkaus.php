@@ -1,5 +1,4 @@
 <?php
-
 require_once 'libs/utilities.php';
 require_once 'libs/models/Drinkki.php';
 require_once 'libs/models/Juomalaji.php';
@@ -22,7 +21,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 } else {
     $drinkki = Drinkki::haeIDlla($_GET['id']);
     if (currentUser() != '1') {
-        header('Location: login.php');
+        adminOikeudet();
+        header('Location: index.php');
     } else {
         naytaNakyma('muokkaus.php', array('drinkki' => $drinkki));
     }

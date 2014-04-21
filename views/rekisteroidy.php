@@ -1,4 +1,5 @@
-<div class="container">    
+<div class="col-xs-4"> 
+    <h2>Rekisteröityminen</h2>
     <form action="rekisteroidy.php" method="POST" class="form-horizontal"> 
         Etunimi: <input type="text" class="form-control" name="etunimi" placeholder="Etunimi" value="<?php echo $data->etunimi?>"/> 
         Sukunimi: <input type="text" class="form-control" name="sukunimi" placeholder="Sukunimi" value="<?php echo $data->sukunimi?>"/>
@@ -7,7 +8,9 @@
         Salasana: <input type="password" class="form-control" name="salasana" placeholder="Salasana"/>
         Salasana uudelleen: <input type="password" class="form-control" name="salasana2" placeholder="Salasana uudelleen"/>
         <input type="hidden" name="submitted" value="true">
-        <button type="submit" class="btn btn-success">Kirjaudu</button>
+        <br>
+        <a href="index.php"><button type="button" class="btn btn-default">Peruuta</button></a>
+        <button type="submit" class="btn btn-success">Rekisteröidy</button>
     </form>
     
     <!--    <form role="form">

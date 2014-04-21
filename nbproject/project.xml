@@ -6,8 +6,10 @@
             <name>Drinkkiarkisto</name>
         </data>
         <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>käyttäjät</word>
             <word>php</word>
             <word>Pääainesosa</word>
+            <word>Sähköposti</word>
         </spellchecker-wordlist>
     </configuration>
 </project>

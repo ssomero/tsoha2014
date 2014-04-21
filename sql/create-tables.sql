@@ -18,11 +18,13 @@ CREATE TABLE drinkki (
 drinkki_id serial ,
 nimi varchar(40) NOT NULL ,
 juomalaji_id serial NOT NULL ,
-lisaaja serial ,
+ohjeet varchar(500) ,
+lisaaja integer ,
 lisaamisaika timestamp with time zone NOT NULL DEFAULT NOW(),   
 PRIMARY KEY (drinkki_id) ,
 FOREIGN KEY (lisaaja) REFERENCES kayttaja(kayttaja_id) 
-    ON UPDATE CASCADE,
+    ON UPDATE CASCADE 
+    ON DELETE SET NULL,
 FOREIGN KEY (juomalaji_id) REFERENCES juomalaji(juomalaji_id)
 );
 
@@ -42,6 +44,8 @@ PRIMARY KEY (ainesosa_id)
 CREATE TABLE drinkkimixer (
 ainesosa_id serial ,
 drinkki_id serial ,
+maara decimal(4,1),
+yksikko varchar(10),
 FOREIGN KEY (ainesosa_id) REFERENCES ainesosa(ainesosa_id) 
     ON DELETE CASCADE
     ON UPDATE CASCADE ,

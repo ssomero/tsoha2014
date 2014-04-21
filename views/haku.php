@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Drinkkireseptien hakeminen</h1>
+    <h2>Drinkkireseptien hakeminen</h2>
     <p>Anna hakusanaksi esim. drinkin nimi tai jokin ainesosa
         <br>(tällä hetkellä vain nimellä hakeminen onnistuu)</p>
 

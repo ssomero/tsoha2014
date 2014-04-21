@@ -1,4 +1,5 @@
 <?php
+
 require_once 'libs/tietokantayhteys.php';
 
 class Kayttaja {
@@ -19,17 +20,17 @@ class Kayttaja {
         $this->sukunimi = $sukunimi;
     }
 
-    function etsiKaikkiKayttajat() {
-        $sql = "SELECT kayttaja_id, kayttajatunnus, salasana, email, etunimi, sukunimi FROM kayttaja";
+    public static function etsiKaikkiKayttajat() {
+        $sql = "SELECT * FROM kayttaja";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
 
         $tulokset = array();
         foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
             $kayttaja = new Kayttaja();
-            $kayttaja->setKayttaja_id($tulos->id);
-            $kayttaja->setKayttajanimi($tulos->tunnus);
-            $kayttaja->setSalanana($tulos->salasana);
+            $kayttaja->setKayttaja_id($tulos->kayttaja_id);
+            $kayttaja->setKayttajanimi($tulos->kayttajanimi);
+            $kayttaja->setSalasana($tulos->salasana);
             $kayttaja->setEmail($tulos->email);
             $kayttaja->setEtunimi($tulos->etunimi);
             $kayttaja->setSukunimi($tulos->sukunimi);
@@ -39,6 +40,26 @@ class Kayttaja {
             $tulokset[] = $kayttaja;
         }
         return $tulokset;
+    }
+    
+    public static function etsiKayttajaIDlla($kayttaja_id) {
+        $sql = "SELECT * FROM kayttaja WHERE kayttaja_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($kayttaja_id));
+        $tulos = $kysely->fetchObject();
+        if ($tulos == null) {
+            return null;
+        } else {
+            $kayttaja = new Kayttaja();
+            $kayttaja->setKayttaja_id($tulos->kayttaja_id);
+            $kayttaja->setKayttajanimi($tulos->kayttajanimi);
+            $kayttaja->setSalasana($tulos->salasana);
+            $kayttaja->setEmail($tulos->email);
+            $kayttaja->setEtunimi($tulos->etunimi);
+            $kayttaja->setSukunimi($tulos->sukunimi);
+
+            return $kayttaja;
+        }
     }
 
     public function etsiKayttajaTunnuksilla($kayttajanimi, $salasana) {
@@ -80,10 +101,23 @@ class Kayttaja {
         $sql = "INSERT INTO kayttaja (kayttajanimi, salasana, etunimi, sukunimi, email) VALUES(?, ?, ?, ?, ?) RETURNING kayttaja_id";
         $kysely = getTietokantayhteys()->prepare($sql);
         $ok = $kysely->execute(array($this->getKayttajanimi(), $this->getSalasana(), $this->getEtunimi(), $this->getSukunimi(), $this->getEmail()));
-        if($ok) {
+        if ($ok) {
             $this->kayttaja_id = $kysely->fetchColumn();
         }
         return $ok;
+    }
+
+    public function muokkaaKayttajaa() {
+        $sql = "UPDATE kayttaja SET salasana=?, etunimi=?, sukunimi=?, email=? "
+                . "WHERE kayttaja_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->salasana, $this->etunimi, $this->sukunimi, $this->email, $this->kayttaja_id));
+    }
+    
+    public function poistaKayttaja() {
+        $sql = "DELETE FROM kayttaja WHERE kayttaja_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array($this->kayttaja_id));
     }
 
     public function setKayttaja_id($kayttaja_id) {

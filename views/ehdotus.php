@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Drinkin ehdottaminen</h1>
+    <h2>Drinkin ehdottaminen</h2>
     <p>Täytä alla olevat kentät huolellisesti ehdottaaksesi uutta reseptiä. </p>
     <form role="form" action="ehdotus.php" method="POST">
         <div class="form-group">

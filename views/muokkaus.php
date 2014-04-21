@@ -1,5 +1,5 @@
 <div class="container">
-    <h1>Drinkin muokkaus</h1>
+    <h2>Drinkin muokkaus</h2>
 
     <form role="form" action="muokkaus.php" method="POST">
         <div class="form-group">

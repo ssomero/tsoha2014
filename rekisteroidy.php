@@ -18,8 +18,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     naytaNakyma('rekisteroidy.php', array(
     'etunimi' => $uusikayttaja->getEtunimi(), 'sukunimi' => $uusikayttaja->getSukunimi(), 'email' => $uusikayttaja->getEmail(),
         'virhe' => "Valitsemasi käyttäjänimi on jo käytössä!"));
-    } 
-    elseif ($_POST['salasana'] != $_POST['salasana2']) {
+    } elseif(empty($_POST['salasana']) || empty ($_POST['salasana2'])) {
+        naytaNakyma('rekisteroidy.php', array('etunimi' => $uusikayttaja->getEtunimi(), 
+            'sukunimi' => $uusikayttaja->getSukunimi(), 'email' => $uusikayttaja->getEmail(), 'kayttajanimi' => $uusikayttaja->getKayttajanimi(), 
+            'virhe' => "Kirjoita salasana molempiin kenttiin!"));
+    } elseif ($_POST['salasana'] != $_POST['salasana2']) {
         naytaNakyma('rekisteroidy.php', array(
     'kayttajanimi' => $uusikayttaja->getKayttajanimi(), 'etunimi' => $uusikayttaja->getEtunimi(), 'sukunimi' => $uusikayttaja->getSukunimi(), 'email' => $uusikayttaja->getEmail(),
         'virhe' => "Salasanat eivät täsmää"));
@@ -27,6 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
  else {
     $uusikayttaja->luoKayttaja();
     $_SESSION['kirjautunut'] = $uusikayttaja->getKayttaja_id();
+    $_SESSION['kayttajanNimi'] = $uusikayttaja->getKayttajanimi();
     $_SESSION['viesti'] = "Rekisteröityminen onnistui!";
     header('Location: index.php');
     }

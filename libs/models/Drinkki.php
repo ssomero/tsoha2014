@@ -83,7 +83,8 @@ class Drinkki {
 //        $haku = strtolower($hakusana);
         $sql = "SELECT * FROM drinkki "
                 . "WHERE "
-                . "nimi LIKE ?";
+                . "nimi LIKE ? "
+                . "ORDER BY nimi";
         
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute(array("%$hakusana%"));

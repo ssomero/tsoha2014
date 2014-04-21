@@ -28,4 +28,8 @@ function currentUser() {
         return $_SESSION['kirjautunut'];
     }
 }
+
+function adminOikeudet() {
+    $_SESSION['virhe'] = "Sivu, jonka yritit ladata vaatii ylläpitäjän oikeudet";
+}
 ?>
