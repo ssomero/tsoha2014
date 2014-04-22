@@ -1,16 +1,19 @@
-<div class="col-xs-4"> 
+<div class="container"> 
     <h2>Rekisteröityminen</h2>
     <form action="rekisteroidy.php" method="POST" class="form-horizontal"> 
-        Etunimi: <input type="text" class="form-control" name="etunimi" placeholder="Etunimi" value="<?php echo $data->etunimi?>"/> 
-        Sukunimi: <input type="text" class="form-control" name="sukunimi" placeholder="Sukunimi" value="<?php echo $data->sukunimi?>"/>
-        Sähköposti: <input type="email" class="form-control" name="email" placeholder="Sähköposti" value="<?php echo $data->email?>"/>
-        Käyttäjänimi: <input type="text" class="form-control" name="kayttajanimi" placeholder="Käyttäjänimi" value="<?php echo $data->kayttajanimi?>"/>    
-        Salasana: <input type="password" class="form-control" name="salasana" placeholder="Salasana"/>
-        Salasana uudelleen: <input type="password" class="form-control" name="salasana2" placeholder="Salasana uudelleen"/>
+        <div class="col-xs-3">
+            <label>Etunimi:</label> <input type="text" class="form-control" name="etunimi" placeholder="Etunimi" value="<?php echo $data->etunimi?>"/> 
+        <label>Sukunimi:</label> <input type="text" class="form-control" name="sukunimi" placeholder="Sukunimi" value="<?php echo $data->sukunimi?>"/>
+        <label>Sähköposti:</label> <input type="email" class="form-control" name="email" placeholder="Sähköposti" value="<?php echo $data->email?>"/>
+        <label>Käyttäjänimi:</label> <input type="text" class="form-control" name="kayttajanimi" placeholder="Käyttäjänimi" value="<?php echo $data->kayttajanimi?>"/>    
+        <label>Salasana:</label> <input type="password" class="form-control" name="salasana" placeholder="Salasana"/>
+        <label>Salasana uudelleen:</label> <input type="password" class="form-control" name="salasana2" placeholder="Salasana uudelleen"/>
         <input type="hidden" name="submitted" value="true">
         <br>
+        
         <a href="index.php"><button type="button" class="btn btn-default">Peruuta</button></a>
         <button type="submit" class="btn btn-success">Rekisteröidy</button>
+        </div>
     </form>
     
     <!--    <form role="form">
