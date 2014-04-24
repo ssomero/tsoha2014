@@ -3,7 +3,7 @@
     <form role="form" action="kayttajansivu.php" method="POST">
         <fieldset disabled>
             <div class="form-group">
-                <div class="col-xs-4"
+                <div class="col-xs-4">
                     Käyttäjänimi <input type="text" class="form-control"  value="<?php echo $data->kayttaja->getKayttajanimi(); ?>">
                     Etunimi <input type="text" class="form-control" value="<?php echo $data->kayttaja->getEtunimi(); ?>">
                     Sukunimi <input type="text" class="form-control" value="<?php echo$data->kayttaja->getSukunimi(); ?>">

@@ -1,5 +1,13 @@
 <div class="container">
     <h2><?php echo ucfirst($data->drinkki->getNimi()); ?> (<?php echo $data->drinkki->getJuomalaji(); ?>)</h2>
+    <h4>Vaihtoehtoiset nimet</h4>
+    <?php if($data->muutnimet == null): ?>
+    <p>Ei lisätty muita nimiä</p>
+    <?php else: ?>
+    <?php foreach ($data->muutnimet as $muunimi): ?>
+    <li><?php echo $muunimi->getNimi() ?></li>
+    <?php endforeach; ?>
+    <?php endif; ?>
     <h3>Ainesosat:</h3>  
     <ul>
         <?php foreach ($data->drinkkimix as $drinkkimix): ?>

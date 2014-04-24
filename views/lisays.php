@@ -5,12 +5,20 @@
         <div class="form-group">
             <div class="col-xs-4">
                 <label for="inputName">Nimi</label>
-                <input type="text" class="form-control" name="drinkinNimi" placeholder="Drinkin nimi">
+                <input type="text" class="form-control" name="drinkinNimi" placeholder="Drinkin nimi" value="<?php echo $data->drinkinNimi; ?>">
                 <br>
+                <label>Vaihtoehtoinen nimi</label>
+                <div id="kentta" class="form-inline">
+                <input class="btn btn-warning" type="button" value="Lisää drinkille uusi kutsumanimi" onclick="lisaaNimiKentta('kentta')"/>
+                </div>
                 <label>Juomalaji</label>
                 <select name="juomalaji_id" class="form-control">
                     <?php foreach (Juomalaji::listaaJuomalajit() as $juomalaji): ?>
-                        <option value="<?php echo $juomalaji->getJuomalaji_id(); ?>"><?php echo $juomalaji->getNimi(); ?></option>
+                        <?php if ($data->juomalaji == $juomalaji->getJuomalaji_id()): ?>
+                    <option value="<?php echo $juomalaji->getJuomalaji_id(); ?>" selected="selected"><?php echo $juomalaji->getNimi(); ?></option>
+                        <?php else: ?>
+                            <option value="<?php echo $juomalaji->getJuomalaji_id(); ?>"><?php echo $juomalaji->getNimi(); ?></option>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -23,8 +31,8 @@
                     <input class="form-control" type="text"  placeholder="Ainesosa" name="ainekset[]"/>
                 </div>
 
-                <input class="btn btn-default" type="button" value="Lisää uusi ainesosa" onClick="lisaaKentta('kentat');"/> 
-
+                <input class="btn btn-warning" type="button" value="Lisää uusi ainesosa" onClick="lisaaKentta('kentat');"/> 
+                
             </div>
 
             <div class="col-xs-4">
@@ -34,6 +42,7 @@
                 <br>
                 <button type="submit" class="btn btn-success">Lisää drinkki</button>        
                 <a href="drinkit.php"><button type="button" class="btn btn-default">Peruuta</button></a>
+                <br>
             </div>
         </div>    
 
@@ -52,6 +61,22 @@
                 ainesdiv.innerHTML = "<input type='text' class='form-control' placeholder='Määrä' name='maarat[]'> <input type='text' class='form-control' placeholder='cl, dl...' name='yksikot[]'> <input type='text' class='form-control' placeholder='Ainesosa' name='ainekset[]'>";
 
                 document.getElementById(divName).appendChild(ainesdiv);
+                laskuri++;
+            }
+        }
+    </script>
+    
+    <script>
+        var laskuri = 0;
+        var max = 10;
+        function lisaaNimiKentta(divName) {
+            if(laskuri==max) {
+                alert("Ei saa olla yli" + laskuri + "vaihtoehtoista nimeä!");
+            } else {
+                var nimidiv = document.createElement('div');
+                nimidiv.innerHTML = "<input type='text' class='form-control' placeholder='Nimi' name='nimet[]'> "
+                
+                document.getElementById(divName).appendChild(nimidiv);
                 laskuri++;
             }
         }
