@@ -1,7 +1,6 @@
 <div class="container">
     <h2>Drinkkireseptien hakeminen</h2>
-    <p>Anna hakusanaksi esim. drinkin nimi tai jokin ainesosa
-        <br>(tällä hetkellä vain nimellä hakeminen onnistuu)</p>
+    <p>Anna hakusanaksi esim. drinkin nimi tai jokin ainesosa</p>
 
     <form class="navbar-form navbar-left" role="search" action="haku.php" method="POST">
         <div class="form-group">
@@ -11,6 +10,8 @@
         <button type="submit" class="btn btn-primary">Hae</button>
     </form>
 </div>
+
+
 
 <div class="container">
     <?php if (isset($_POST['submitted'])): ?>    

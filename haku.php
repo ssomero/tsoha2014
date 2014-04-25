@@ -8,7 +8,7 @@ if (!isset($_POST['submitted'])) {
     naytaNakyma('haku.php');
 } else {
     $hakusana = $_POST['hakusana'];
-    $haku = Drinkki::haku($hakusana);
+    $haku = Drinkki::hakuKaikkialta($hakusana);
     naytaNakyma('haku.php', array('haku' => $haku));
 }
 ?>

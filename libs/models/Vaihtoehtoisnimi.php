@@ -16,7 +16,6 @@ class Vaihtoehtoisnimi {
         $kysely->execute(array($this->getDrinkki_id(), $this->getNimi()));        
     }
 
-
     public static function haeDrinkinMuutNimet($drinkki_id) {
         $sql = "SELECT * FROM vaihtoehtoisnimi WHERE drinkki_id=?";
         $kysely = getTietokantayhteys()->prepare($sql);
@@ -29,7 +28,7 @@ class Vaihtoehtoisnimi {
             $muunimi->setDrinkki_id($tulos->drinkki_id);
             $muunimi->setNimi($tulos->nimi);
             $tulokset[] = $muunimi;
-        }
+        } return $tulokset;
     }
     
     public static function onkoNimiOlemassa($nimi) {

@@ -7,7 +7,7 @@
     <?php else : ?>
         <h2>Tervetuloa drinkkiarkistoon!</h2>
         <p>Täällä voit hakea, selata, ehdottaa ja lisätä drinkkireseptejä. <br>
-            Lisätäksesi drinkkejä sinun täytyy olla rekisteröitynyt käyttäjä. <br>
+            Lisätäksesi drinkkejä sinun täytyy olla rekisteröitynyt käyttäjä.<br>
         </p>
     <?php endif; ?>
 

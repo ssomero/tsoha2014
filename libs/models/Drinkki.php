@@ -103,6 +103,37 @@ class Drinkki {
             $tulokset[] = $drinkki;
         } return $tulokset;
     }
+    
+    public static function hakuKaikkialta($hakusana) {
+//        $haku = strtolower($hakusana);
+        $sql = "SELECT distinct drinkki.drinkki_id, drinkki.nimi, juomalaji_id, lisaaja, lisaamisaika, ohjeet FROM drinkki, drinkkimixer, vaihtoehtoisnimi, ainesosa "
+                . "WHERE "
+                . "drinkki.drinkki_id = drinkkimixer.drinkki_id AND "
+                . "drinkkimixer.ainesosa_id = ainesosa.ainesosa_id AND "
+                . "drinkki.drinkki_id = vaihtoehtoisnimi.drinkki_id AND "
+                . "drinkkimixer.drinkki_id = vaihtoehtoisnimi.drinkki_id AND "
+                . "drinkki.nimi LIKE ? OR "
+                . "ainesosa.nimi LIKE ? OR "
+                . "vaihtoehtoisnimi.nimi LIKE ? "
+                . "ORDER BY drinkki.nimi";
+        
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute(array("%$hakusana%", "%$hakusana%", "%$hakusana%"));
+        
+        $tulokset = array();        
+                
+        foreach ($kysely->fetchAll(PDO::FETCH_OBJ) as $tulos) {
+            $drinkki = new Drinkki();
+            $drinkki->setDrinkki_id($tulos->drinkki_id);
+            $drinkki->setNimi($tulos->nimi);
+            $drinkki->setJuomalaji_id($tulos->juomalaji_id);
+            $drinkki->setLisaaja($tulos->lisaaja);
+            $drinkki->setLisaamisaika($tulos->lisaamisaika);
+            $drinkki->setOhjeet($tulos->ohjeet);
+
+            $tulokset[] = $drinkki;
+        } return $tulokset;
+    }
 
     public static function onkoNimiOlemassa($nimi) {
         $sql = "SELECT count(*) FROM drinkki WHERE nimi=?";
