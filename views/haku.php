@@ -27,9 +27,14 @@
             <tbody>
                 <?php foreach ($data->haku as $tulos): ?>
                     <tr>
-                        <td><a href="drinkki.php?id=<?php echo $tulos->getDrinkki_id()?>"><?php echo ucfirst($tulos->getNimi()); ?></a></td>
+                        <td><a href="drinkki.php?id=<?php echo $tulos->getDrinkki_id() ?>"><?php echo ucfirst($tulos->getNimi()); ?></a></td>
                         <td><?php echo $tulos->getJuomalaji(); ?></td>
-                        <td><?php echo $tulos->getKayttaja(); ?></td>
+                        <?php if ($tulos->getKayttaja() == null): ?>
+                            <td> ------- </td>
+                        <?php else: ?>
+                            <td><?php echo $tulos->getKayttaja(); ?></td>
+                        <?php endif; ?>
+
                         <td><?php echo date('d-m-Y H:i', strtotime($tulos->getLisaamisaika())); ?></td>
                     </tr>
                 <?php endforeach; ?>

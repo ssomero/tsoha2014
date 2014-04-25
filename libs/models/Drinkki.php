@@ -106,12 +106,12 @@ class Drinkki {
     
     public static function hakuKaikkialta($hakusana) {
 //        $haku = strtolower($hakusana);
-        $sql = "SELECT distinct drinkki.drinkki_id, drinkki.nimi, juomalaji_id, lisaaja, lisaamisaika, ohjeet FROM drinkki, drinkkimixer, vaihtoehtoisnimi, ainesosa "
-                . "WHERE "
+        $sql = "SELECT distinct drinkki.drinkki_id, drinkki.nimi, juomalaji_id, lisaaja, lisaamisaika, ohjeet FROM "
+                . "drinkki, drinkkimixer, vaihtoehtoisnimi, ainesosa WHERE "
                 . "drinkki.drinkki_id = drinkkimixer.drinkki_id AND "
-                . "drinkkimixer.ainesosa_id = ainesosa.ainesosa_id AND "
+                . "ainesosa.ainesosa_id = drinkkimixer.ainesosa_id AND "
                 . "drinkki.drinkki_id = vaihtoehtoisnimi.drinkki_id AND "
-                . "drinkkimixer.drinkki_id = vaihtoehtoisnimi.drinkki_id AND "
+                . "vaihtoehtoisnimi.drinkki_id = drinkkimixer.drinkki_id AND "
                 . "drinkki.nimi LIKE ? OR "
                 . "ainesosa.nimi LIKE ? OR "
                 . "vaihtoehtoisnimi.nimi LIKE ? "
@@ -126,8 +126,8 @@ class Drinkki {
             $drinkki = new Drinkki();
             $drinkki->setDrinkki_id($tulos->drinkki_id);
             $drinkki->setNimi($tulos->nimi);
-            $drinkki->setJuomalaji_id($tulos->juomalaji_id);
-            $drinkki->setLisaaja($tulos->lisaaja);
+            $drinkki->setJuomalaji_id($tulos->juomalaji_id);   
+            $drinkki->setLisaaja($tulos->lisaaja);                       
             $drinkki->setLisaamisaika($tulos->lisaamisaika);
             $drinkki->setOhjeet($tulos->ohjeet);
 

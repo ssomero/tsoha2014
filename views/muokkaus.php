@@ -19,7 +19,23 @@
                     <?php endforeach; ?>
                 </select>
                 <br>
+            </div>
+            <div class="col-xs-10">
 
+                <label>Ainesosat</label>
+                <?php foreach ($data->ainekset as $mix): ?>
+                    <div id="kentat" class="form-inline">
+
+                        <input class="form-control"  type='text' placeholder="Määrä" name='maarat[]' value="<?php echo $mix->getMaara(); ?>"/> 
+                        <input class="form-control" type='text' placeholder="cl, dl,..." name='yksikot[]' value="<?php echo $mix->getYksikko(); ?>"/> 
+                        <input class="form-control" type="text"  placeholder="Ainesosa" name="ainekset[]" value="<?php echo $mix->getAinesosanNimi($mix->getAinesosa_id()); ?>"/>
+
+                    </div>
+                <?php endforeach; ?>
+                <input class="btn btn-warning" type="button" value="Lisää uusi ainesosa" onClick="lisaaKentta('kentat');"/> 
+
+            </div>
+            <div class="col-xs-4">
                 <label for="inputOhjeet">Valmistusohjeet</label>
                 <textarea class="form-control" rows="3" name="ohjeet"><?php echo $data->drinkki->getOhjeet(); ?></textarea>
                 <br>
