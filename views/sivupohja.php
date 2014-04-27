@@ -31,6 +31,9 @@
                     <?php endif; ?>
                     ><a href="drinkit.php">Drinkit</a></li>
                 <?php if(currentUser()== '1'): ?>
+                <li><a href="ehdotukset.php">Ehdotukset <span class="badge"><?php echo Drinkki::ehdotustenMaara();?></span></a></li>
+                <?php endif; ?>
+                <?php if(currentUser()== '1'): ?>
                 <li><a href="kayttajat.php">Käyttäjät</a></li>
                 <?php endif; ?>
             </ul>            

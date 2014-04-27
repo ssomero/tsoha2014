@@ -31,6 +31,7 @@
                 </thead>
                 <tbody>
                     <?php foreach ($data->haku as $tulos): ?>
+                    <?php if($tulos->getEhdotus()!=true): ?>
                         <tr>
                             <td><a href="drinkki.php?id=<?php echo $tulos->getDrinkki_id() ?>"><?php echo ucfirst($tulos->getNimi()); ?></a></td>
                             <td><?php echo $tulos->getJuomalaji(); ?></td>
@@ -42,6 +43,7 @@
 
                             <td><?php echo date('d-m-Y H:i', strtotime($tulos->getLisaamisaika())); ?></td>
                         </tr>
+                        <?php endif; ?>
                     <?php endforeach; ?>
                 </tbody>             
             </table>

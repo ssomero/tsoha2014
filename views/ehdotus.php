@@ -9,7 +9,12 @@
             <div class="col-xs-4">
                 <label>Nimi</label> 
                 <input type="text" class="form-control" name="drinkinNimi" placeholder="Drinkin nimi">
+                
                 <br>
+                <label>Vaihtoehtoinen nimi</label>
+                <div id="kentta" class="form-inline">
+                <input class="btn btn-warning" type="button" value="Lisää drinkille uusi kutsumanimi" onclick="lisaaNimiKentta('kentta')"/>
+                </div>
                 <label>Juomalaji</label>
                 <select name="juomalaji_id" class="form-control">
                     <?php foreach (Juomalaji::listaaJuomalajit() as $juomalaji): ?>
@@ -26,7 +31,7 @@
                     <input class="form-control" type='text' placeholder="cl, dl,..." name='yksikot[]'/> 
                     <input class="form-control" type="text"  placeholder="Ainesosa" name="ainekset[]"/>
                 </div>
-                <input class="btn btn-default" type="button" value="Lisää uusi ainesosa" onClick="lisaaKentta('kentat');"/> 
+                <input class="btn btn-warning" type="button" value="Lisää uusi ainesosa" onClick="lisaaKentta('kentat');"/> 
                 <br>
             </div>
             <div class="col-xs-4">
@@ -36,6 +41,7 @@
             </div>
         </div>    
         <button type="submit" class="btn btn-success">Ehdota drinkkiä</button>
+        <a href="drinkit.php"><button type="button" class="btn btn-default">Peruuta</button></a>
     </form>
 
     <script>
@@ -55,7 +61,21 @@
             }
         }
     </script>
-
+<script>
+        var laskuri = 0;
+        var max = 10;
+        function lisaaNimiKentta(divName) {
+            if(laskuri==max) {
+                alert("Ei saa olla yli" + laskuri + "vaihtoehtoista nimeä!");
+            } else {
+                var nimidiv = document.createElement('div');
+                nimidiv.innerHTML = "<input type='text' class='form-control' placeholder='Nimi' name='nimet[]'> "
+                
+                document.getElementById(divName).appendChild(nimidiv);
+                laskuri++;
+            }
+        }
+    </script>
 </div>
 
 

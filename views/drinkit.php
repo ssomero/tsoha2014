@@ -21,16 +21,18 @@
             </thead>
             <tbody>
                 <?php foreach ($data->drinkit as $drinkki): ?>
-                    <tr>
-                        <td><a href="drinkki.php?id=<?php echo $drinkki->getDrinkki_id() ?>"><?php echo ucfirst($drinkki->getNimi()); ?></a></td>
-                        <td><?php echo $drinkki->getJuomalaji(); ?></td>
-                        <?php if ($drinkki->getKayttaja() == null): ?>
-                            <td> ------- </td>
-                        <?php else: ?>
-                            <td><?php echo $drinkki->getKayttaja(); ?></td>
-                        <?php endif; ?>
-                        <td><?php echo date('d-m-Y H:i', strtotime($drinkki->getLisaamisaika())); ?></td>
-                    </tr>
+                    <?php if ($drinkki->getEhdotus() != true): ?>
+                        <tr>
+                            <td><a href="drinkki.php?id=<?php echo $drinkki->getDrinkki_id() ?>"><?php echo ucfirst($drinkki->getNimi()); ?></a></td>
+                            <td><?php echo $drinkki->getJuomalaji(); ?></td>
+                            <?php if ($drinkki->getKayttaja() == null): ?>
+                                <td> ------- </td>
+                            <?php else: ?>
+                                <td><?php echo $drinkki->getKayttaja(); ?></td>
+                            <?php endif; ?>
+                            <td><?php echo date('d-m-Y H:i', strtotime($drinkki->getLisaamisaika())); ?></td>
+                        </tr>
+                    <?php endif; ?>
                 <?php endforeach; ?>
             </tbody>            
         </table>

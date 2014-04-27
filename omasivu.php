@@ -1,6 +1,7 @@
 <?php
 require_once 'libs/utilities.php';
 require_once 'libs/models/Kayttaja.php';
+require_once 'libs/models/Drinkki.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $kayt = Kayttaja::etsiKayttajaIDlla($_SESSION['kirjautunut']);
