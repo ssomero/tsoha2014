@@ -20,7 +20,8 @@ nimi varchar(40) NOT NULL ,
 juomalaji_id serial NOT NULL ,
 ohjeet varchar(500) ,
 lisaaja integer ,
-lisaamisaika timestamp with time zone NOT NULL DEFAULT NOW(),   
+lisaamisaika timestamp with time zone NOT NULL DEFAULT NOW(),
+ehdotus boolean,   
 PRIMARY KEY (drinkki_id) ,
 FOREIGN KEY (lisaaja) REFERENCES kayttaja(kayttaja_id) 
     ON UPDATE CASCADE 

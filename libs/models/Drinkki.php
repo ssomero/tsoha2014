@@ -81,6 +81,7 @@ class Drinkki {
     
     public static function listaaJuomalajinMukaan() {
         $sql = "SELECT distinct drinkki.nimi, drinkki.drinkki_id, drinkki.juomalaji_id, lisaaja, lisaamisaika, ohjeet FROM drinkki, juomalaji "
+                . "WHERE ehdotus IS NOT TRUE "
                 . "ORDER BY drinkki.juomalaji_id, drinkki.nimi";
         $kysely = getTietokantayhteys()->prepare($sql);
         $kysely->execute();
