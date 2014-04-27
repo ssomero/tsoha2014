@@ -5,7 +5,9 @@
     <p>Ei lisätty muita nimiä</p>
     <?php else: ?>
     <?php foreach ($data->muutnimet as $muunimi): ?>
-    <li><?php echo $muunimi->getNimi() ?></li>
+    <ul>
+    <li><?php echo ucfirst($muunimi->getNimi()); ?></li>
+    </ul>
     <?php endforeach; ?>
     <?php endif; ?>
     <h3>Ainesosat:</h3>  

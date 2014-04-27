@@ -33,6 +33,15 @@ class Drinkkimixer {
         } return $tulokset;
     }
     
+    public static function laskeDrinkinAinesosienMaara($drinkki_id) {
+        $sql = "SELECT COUNT(*) FROM drinkkimixer WHERE drinkki_id=?";
+        $kysely = getTietokantayhteys()->prepare($sql);
+        $kysely->execute($drinkki_id);
+        $tulos = $kysely->fetchColumn();
+        return $tulos;
+    }
+
+
     // metodi tarkastaa onko ainesosa käytössä muissa drinkeissä 
 //    public static function onkoAinesosaaMuualla($ainesosa_id) {
 //        $sql = "SELECT count(*) FROM drinkkimixer WHERE ainesosa_id=?";
@@ -53,10 +62,10 @@ class Drinkkimixer {
     }
     
     public function muokkaaDrinkkiMix() {
-        $sql = "UPDATE drinkkimixer SET ainesosa_id = ?, maara=?, yskikko=?"
-                . "WHERE drinkki_id=?";
+        $sql = "UPDATE drinkkimixer SET maara=?, yksikko=?"
+                . "WHERE drinkki_id=? AND ainesosa_id=?";
         $kysely = getTietokantayhteys()->prepare($sql);
-        $kysely->execute(array($this->ainesosa_id, $this->maara, $this->yksikko));             
+        $kysely->execute(array($this->maara, $this->yksikko, $this->drinkki_id, $this->ainesosa_id));             
     }
     
     public static function getAinesosanNimi($ainesosa_id) {

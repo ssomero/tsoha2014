@@ -1,11 +1,12 @@
 <div class="container">
+    
     <h2>Drinkin muokkaus</h2>
 
     <form role="form" action="muokkaus.php" method="POST">
         <div class="form-group">
             <div class="col-xs-4">
                 <label for="inputName">Nimi</label>
-                <input type="text" class="form-control" name="drinkinNimi" value="<?php echo $data->drinkki->getNimi(); ?>">
+                <input type="text" class="form-control" name="drinkinNimi" value="<?php echo ucfirst($data->drinkki->getNimi()); ?>">
                 <input type="hidden" name="id" value="<?php echo $data->drinkki->getDrinkki_id(); ?>">
                 <br>
                 <label>Juomalaji</label>
@@ -28,11 +29,11 @@
 
                         <input class="form-control"  type='text' placeholder="Määrä" name='maarat[]' value="<?php echo $mix->getMaara(); ?>"/> 
                         <input class="form-control" type='text' placeholder="cl, dl,..." name='yksikot[]' value="<?php echo $mix->getYksikko(); ?>"/> 
-                        <input class="form-control" type="text"  placeholder="Ainesosa" name="ainekset[]" value="<?php echo $mix->getAinesosanNimi($mix->getAinesosa_id()); ?>"/>
-
+                        <input class="form-control" type="text"  placeholder="Ainesosa" name="ainekset[]" value="<?php echo $mix->getAinesosanNimi($mix->getAinesosa_id()); ?>" disabled/>
+                        <input type="hidden" name="ainesosa_id[]" value="<?php echo $mix->getAinesosa_id(); ?>"/>
                     </div>
                 <?php endforeach; ?>
-                <input class="btn btn-warning" type="button" value="Lisää uusi ainesosa" onClick="lisaaKentta('kentat');"/> 
+                <br> 
 
             </div>
             <div class="col-xs-4">
@@ -45,5 +46,7 @@
         </div>    
 
     </form>
+    
+    
 </div>
 
